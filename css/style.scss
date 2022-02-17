@@ -1,0 +1,836 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
+}
+
+body{
+  &::-webkit-scrollbar {
+    width: 18px;
+  }
+  &::-webkit-scrollbar-thumb{
+  background-color: #2c98f0;
+  outline: 2px solid #2c98f0;
+  }
+}
+
+
+@import "var.scss";
+.sirina{
+    margin: 0px auto;
+    width: 85%;
+}
+@mixin font {
+    font-family: "Courier";
+    font-weight: 600;
+}
+@mixin flexrow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+@mixin flexcolumn{
+    display: flex;
+    flex-direction: column;
+}
+@mixin flexcentar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@mixin max{
+    width: 100%;
+    height: 100%;
+}
+.cleaner{
+  clear: both;
+}
+nav{
+    width: 22%;
+    height: 100vh;
+    background-color: rgb(24, 24, 24);
+    float: left;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2%;
+    border-right: 0.2vw solid #2c98f0;
+    #naslov{
+        font-size: 1.5vw;
+        color: slategray;  
+    }
+    p{
+        font-size: 1.2vw;
+        color: slategray;
+        margin: 0px auto;
+        margin-top: 1vw;
+    }
+    span{
+        color: #2c98f0;
+        font-weight: 700;
+    }
+   #slika{
+        width: 10vw;
+        height: 10vw;
+        border-radius: 50%;
+        margin: 0px auto;
+        margin-bottom: 15%;
+        background-image: url("slika1.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        border: 0.2vw solid #5b97c9;       
+    }
+    h1{
+        margin: 0px auto;        
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        margin: 0px auto;
+        margin-top: 10%;
+        li{
+            list-style-type: none;
+            margin: 0px auto;          
+            margin-bottom: 13%;
+            a{
+                color: slategray;
+                font-size: 1.3vw;
+                text-decoration: none;
+               &:hover{
+                   color: $svetloplava;
+               }
+               &:hover + .line{
+                   width: 100%;
+               }              
+            }     
+            .line{
+                width: 0%;
+                height: 1px;
+                background-color: #2c98f0;
+                transition: 0.2s ease-in-out;
+                margin: 0px auto;
+            }    
+        }       
+    }
+    #ul2{
+        display: flex;
+        flex-direction: row;
+        width: 75%;
+        justify-content: space-around;
+        li{
+            list-style-type: none;
+            a{
+                text-decoration: none;
+                font-size: 1vw;
+            }
+        }
+    }
+}
+main{
+    width: 78%;
+    height: fit-content;
+    float: right;
+    background-color: #ebebe5;
+    #reg1{
+        width: 100%;
+        height: 100vh;
+        background-image: url("../img/slika3.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: flex-start;
+        background-attachment: fixed;
+        .typing{
+            margin-left: 7%;
+            margin-top: 15%;            
+            p{
+                border-right: .15em solid $svetloplava;
+                white-space: nowrap;
+                overflow: hidden;
+                font-weight: bolder;
+                color: #fff;
+                font-size: 55px;
+                font-family: 'Miriam Libre', sans-serif;
+                width: fit-content;
+                &:nth-child(1) {                  
+                    width: 180px;
+                    -webkit-animation: type 1s steps(7, end);
+                    animation: type 0.7s steps(7, end);
+                    -webkit-animation-fill-mode: forwards;
+                    animation-fill-mode: forwards;
+                }
+                &:nth-child(2) {
+                    width: 420px;
+                    opacity: 0;
+                    -webkit-animation: type2 1.5s steps(20, end);
+                    animation: type2 1.5s steps(20, end);
+                    -webkit-animation-delay: 0.7s;
+                    animation-delay: 0.7s;
+                    -webkit-animation-fill-mode: forwards;
+                    animation-fill-mode: forwards;
+                    margin: 20px 0px;
+                }
+                &:nth-child(3) {
+                    width: 520px;
+                    opacity: 0;
+                    -webkit-animation: type3 1.5s steps(25, end), blink .5s step-end infinite alternate;
+                    animation: type3 1.5s steps(25, end), blink .5s step-end infinite alternate;
+                    -webkit-animation-delay: 2.4s;
+                    animation-delay: 2.4s;
+                    -webkit-animation-fill-mode: forwards;
+                    animation-fill-mode: forwards;
+                    margin-bottom: 30px;
+                    
+                }
+                @keyframes type {
+                    0% {
+                      width: 0;
+                    }
+                    99.9% {
+                      border-right: .15em solid $svetloplava;
+                    }
+                    100% {
+                      border: none;
+                    }
+                  }                  
+                  @-webkit-keyframes type {
+                    0% {
+                      width: 0;
+                    }
+                    99.9% {
+                      border-right: .15em solid $svetloplava;
+                    }
+                    100% {
+                      border: none;
+                    }
+                  }                  
+                  @keyframes type2 {
+                    0% {
+                      width: 0;
+                    }
+                    1% {
+                      opacity: 1;
+                    }
+                    99.9% {
+                      border-right: .15em solid $svetloplava;
+                    }
+                    100% {
+                      opacity: 1;
+                      border: none;
+                    }
+                  }                  
+                  @-webkit-keyframes type2 {
+                    0% {
+                      width: 0;
+                    }
+                    1% {
+                      opacity: 1;
+                    }
+                    99.9% {
+                      border-right: .15em solid $svetloplava;
+                    }
+                    100% {
+                      opacity: 1;
+                      border: none;
+                    }
+                  }
+                  @keyframes type3 {
+                    0% {
+                      width: 0;
+                    }
+                    1% {
+                      opacity: 1;
+                    }
+                    100% {
+                      opacity: 1;
+                    }
+                  }
+                  @-webkit-keyframes type3 {
+                    0% {
+                      width: 0;
+                    }
+                    1% {
+                      opacity: 1;
+                    }
+                    100% {
+                      opacity: 1;
+                    }
+                  }   
+                  @keyframes blink {
+                    50% {
+                      border-color: transparent;
+                    }
+                  }
+                  @-webkit-keyframes blink {
+                    50% {
+                      border-color: tranparent;
+                      animation-iteration-count: infinite;
+                    }
+                  }
+            }
+        }
+        a{
+          margin-left: 6%;
+        input{
+            width: 200px;
+            height: 80px;
+            background-color: rgba(0, 0, 0, 0);
+            border: 3px solid $svetloplava;
+            color: #fff;
+            font-size: 25px;
+            cursor: pointer;
+            animation-name: anim2;
+            position: relative;
+            animation-duration: 6s;           
+            color: $svetloplava;
+            margin: 5% 0% 0% 7%;
+            @keyframes anim2 {
+                0%   {top:400px;}
+                100% {top:0px; }
+            }
+            &:hover{
+              color: #fff;
+              border: 3px solid #fff;
+            }
+        }}
+        
+          #strela{
+            margin-left: 12.5%;
+          }
+        
+        i{
+            margin-left: 10%;
+            font-size: 110px;
+            color: $svetloplava;           
+            animation-name: anim7;
+            animation-duration: 2s;
+            position: relative;
+            animation-iteration-count: infinite;
+            animation-delay: 5s;
+            @keyframes  anim7{
+                0%   {top:0px;}
+                50%  {top:30px;}
+                100%  {top:0px;} 
+            }      
+        }
+    }
+  #crno{
+        width: 100%;
+        height: 110vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        margin-top: -110vh;
+    }  
+    #prelaz{
+        width: 100%;
+        height: 25px;
+        background-image: linear-gradient(#252525, #ebebe5);
+    }
+    #reg2{
+       margin: 70px auto;
+       display: flex;
+       flex-direction: row;
+       justify-content: center;
+      
+
+       #abaut4{
+         width: 45%;
+         #jezik{
+           margin-bottom: 0px;
+         }
+       }
+
+     
+        #abaut{
+            margin-right: 15%;
+            width: 55%;
+            #sve{
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              
+            #presek1{
+              height: 270px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              #pocetak{
+                width: 7px;
+                height: 7px;
+                border-radius: 50% 50% 0% 0%;
+                background-color: $tamnoplava;
+              }
+              #kraj{
+                width: 7px;
+                height: 7px;
+                border-radius: 0% 0% 50% 50% ;
+                background-color: $tamnoplava;
+              }
+              #presek{
+                width: 7px;
+                height: 90%;
+                margin-top: 2%;
+                background-color: $tamnoplava;
+              }
+            }}
+           
+            #naslovreg2{
+                border-bottom: 3px solid #2c98f0;
+                width: fit-content;
+                font-weight: 600;
+                margin: 0px auto;
+                margin-bottom: 50px;
+                font-size: 35px;
+            }
+            h1{
+              font-size: 25px;
+              font-weight: 600;
+              text-align: center;
+              color: $tamnosiva;
+            }
+            h2{
+              text-align: center;
+              margin-bottom: 15px;
+              font-weight: 500;
+              color: rgb(80, 90, 99);
+            }
+            p{
+                line-height: 2;
+                font-size: 20px;
+            }
+        }
+        #okvir{
+          margin-top: 30px;
+            width: 35%;
+            height: 330px;
+            border: 5px solid $svetloplava;
+            
+            #okvir2{
+                @include max;
+               
+               
+            }
+            #okvir3{
+                @include max;
+                
+            }  
+        #abaut2{ 
+               
+            position: relative;
+            top: 10px;
+            right: 10px;
+            @include max;
+            margin: 0px auto;
+            height: 320px;
+            background-image: url("../img/slika1.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            transition: 0.5s;            
+            &:hover{
+              top: 0px;
+              right: 0px;
+            }
+        }
+      }
+    }
+    #reg3{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 50px; 
+    .box{
+        width: 22%;
+        height: fit-content;
+        background-color: #fff;
+        border-bottom: 3px solid #009EDF;
+        transition: 0.5s;
+        padding: 30px 10px 10px 30px;
+        
+        &:hover{
+        i{
+            animation: mymove 3s infinite;
+        }
+        }
+        @keyframes mymove {
+            50% {transform: rotate(180deg);}
+        }
+        .opis{
+            display: none;
+        }      
+        &:hover{
+          .opis{
+            display: block;
+          }
+        }
+        .nasl1{
+          display: none;
+        }     
+        &:hover{
+          .nasl{
+            display: none;
+          }
+        }
+        &:hover{
+          .nasl1{
+            display: block;
+          }
+        }
+        .opis{
+          margin-top: 10px;
+        }
+        i{
+            color: #009EDF;
+            font-size: 60px;
+            margin-bottom: 10%;
+            position: relative;
+        }
+        p{
+            font-size: 25px;
+            margin-bottom: 10px;
+            font-weight: none;
+        }
+    }
+    }     
+    #ul3{
+        width: 100%;
+        height: 50px;
+        background-color: $tamnosiva;
+        display: none;
+        position: sticky;
+        top: 0px;
+        z-index: 1111;
+        
+        ul{
+            width: 86%;
+            margin: 0px auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-top: 15px;
+            list-style-type: none;
+            flex-wrap: wrap;
+            li{
+                a{
+                    text-decoration: none;
+                    color: $svetloplava;
+                    size: 25px;
+                }
+            }
+            
+        }
+  }
+  h1{
+      &#nas1{
+         margin-left: 7%;
+         margin-bottom: 30px;
+         letter-spacing: 5px;
+       }
+  }
+  #reg4{
+    @include flexrow;
+    margin-bottom: 100px;
+    margin-top: 100px;
+    .box2{
+      width: 30%;
+      height: fit-content;
+      background-color: #fff;
+      border-bottom: 4px solid $tamnoplava;
+      padding: 10px;
+      box-sizing: border-box;
+      h1{
+        font-size: 25px;
+        text-align: center;
+        margin-top: 70px;
+        margin-bottom: 20px;
+      }
+      p{
+        font-size: 20px;
+        text-align: center;
+        line-height: 1.6;
+        color: rgb(46, 46, 46);
+        margin-bottom: 30px;
+      }
+    .ugao {
+      position: relative;
+      width: 120px; 
+      height: 63.21px;
+      background-color: $tamnoplava;
+      margin: 86.60px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0px auto;
+
+      img{
+        width: 70px;
+        height: 70px;
+      }
+    }
+    .ugao{
+      margin-top: -30px;
+    }
+  .ugao:before,
+  .ugao:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      border-left: 60px solid transparent;
+      border-right: 60px solid transparent;
+  }   
+  .ugao:before {
+      bottom: 100%;
+      border-bottom: 36.60px solid $tamnoplava;
+  }   
+  .ugao:after {
+      top: 100%;
+      width: 0;
+      border-top: 36.60px solid $tamnoplava;
+  }
+  }
+  }
+  .naslovi{
+    margin: 70px 0px;
+    line-height: 1.8;
+    width: 100%;
+    padding-left: 7%;
+    height: 150px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    color: #000;
+    letter-spacing: 3px;
+    background-color: #cecece;
+    h2{
+      font-size: 20px;
+      color: $tamnoplava;
+    }
+    h1{
+      font-size: 32px;
+    }
+  }
+  #reg7{
+    height: fit-content; 
+    #skils{
+      @include flexrow;
+      flex-wrap: wrap;
+      .strana{
+        width: 500px;
+        height: 300px;
+        @include flexcentar;
+        .mali{
+          width: 90%;
+          height: 20%;
+          @include flexcolumn;
+
+         // &:hover{
+           // .linija{
+           //   .procenat{
+            //    width: 100%
+            //  }
+           // }
+         // }
+         div{
+            @include flexrow();
+            .plevo{
+              float: left;
+              margin-top: 5px;
+              color: #000;
+              font-size: 25px;
+              font-weight: 500;
+              font-style: italic;
+              font-weight: 700;
+            }
+            .pdesno{
+              float: right;
+              margin-top: 8px;
+              font-size: 20px;
+              color: #000;
+              font-weight: 700;
+            }
+          }
+          .linija{
+            width: 100%;
+            height: 15px;
+            background-color: rgb(208, 222, 236);
+            border: 2px solid #fff;
+
+            .procenat{
+              height: 100%;
+              width: 90%;
+              background-color: $tamnoplava;
+              transition: 0.7s ease-in-out;
+              
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  #education{
+    .plavo{
+      cursor: pointer;
+      color: #fff;
+      font-weight: 800;
+      width: 100%;
+      padding: 15px 0px;
+      padding-left: 20px;
+      background-color: $tamnoplava;
+      font-size: 25px;
+      margin-bottom: 5px;
+      //&:hover{
+        //background-color: $tamnosiva;
+     // }
+      &:hover + .prosirenje{
+        display: block;
+        
+        p{
+          display: block;
+          padding: 10px;
+          font-size: 20px;
+        }
+      }
+    }
+    .prosirenje{
+      height: fit-content;
+      background-color: #fff;
+      margin-bottom: 10px;
+      p{
+        display: none;
+      }
+      transition: 0.3s;
+    }
+  }
+
+  #reg10{
+    height: fit-content;
+    @include flexrow;
+    margin-bottom: 50px;
+    .cont{
+      width: 48%;
+      height: 100%;
+      input{
+        width: 90%;
+        float: right;
+        height: 53px;
+        margin-bottom: 15px;
+        padding-left: 20px;
+        font-size: 20px;
+        border: 2px solid #5b97c9;
+      }
+      textarea{
+        height: 180px;
+        width: 90%;
+        float: right;
+        margin-bottom: 15px;
+        padding: 20px;
+        font-size: 20px;
+        box-sizing: border-box;
+        resize: none;
+        border: 2px solid #5b97c9;
+      }
+      button{
+        width: 180px;
+        height: 50px;
+        background-color: $tamnoplava;
+        color: #fff;
+        font-size: 20px;
+        margin-left: 10%;
+        cursor: pointer;
+        &:hover{
+          background-color: #5b97c9;
+        }
+      }
+      .cont2{
+        border-right: 3px solid $tamnoplava;
+        width: 100%;
+        height: 110px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #fff;
+        &:nth-child(2){
+          margin: 25px 0px;
+        }
+        p{
+          margin-left: 20px;
+          font-size: 20px;
+          font-weight: 700;
+          word-break: break-all;
+        }
+      }
+      .cont3{
+        height: 100%;
+        width: 110px;
+        background-color: $tamnoplava;
+        @include flexcentar;
+        i{
+          color: #fff;
+          font-size: 35px;
+        }
+      }
+    }
+  }
+  
+  #projekti{
+    height: 300px;
+    @include flexrow;
+    flex-wrap: wrap;
+
+    .pr{
+      .mutno{
+        @include max;
+        @include flexcentar;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: none;
+        
+        h1{
+          text-align: center;
+          color: #fff;
+          margin-top: 50px;
+          margin-bottom: 30px;
+        }
+        h2{
+          text-align: center;
+          color: #fff;
+          margin-top: 5px
+        }
+        button{
+          width: 100px;
+          height: 40px;
+          margin-left: 39%;
+          margin-top: 20px;
+          cursor: pointer;
+        &:hover{
+          background-color: $tamnoplava;
+        }
+        }
+      }
+
+      
+      @include flexcentar;
+      width: 45%;
+      height: 100%;
+      background-image: url("../img/projekat1.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      &:nth-child(2){
+        background-image: url("../img/projekat2.jpg");
+      }
+      &:hover{
+        .mutno{
+          display: block;
+        }
+      }
+    }
+  }
+
+}
