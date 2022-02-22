@@ -1,0 +1,939 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Crimson Pro', serif;
+}
+//BOJE
+$tamnosiva: rgb(24, 24, 24);
+$tamnoplava:#0079CD;
+$svetloplava: #2c98f0;
+$bojatekst: rgb(80, 90, 99);
+$bojatekst2: #708090;
+
+//FUNKCIJA 1
+
+$sirina1: 50px;
+
+@function grid1($n){
+  @return $n * $sirina1;
+}
+
+//FUNKCIJA 2
+
+$sirina2: 100px;
+
+@function grid2($n){
+  @return $n * $sirina2;
+}
+
+//MIXINI
+@mixin border($boja,$sirina:4px){
+  border-bottom: {
+    color: $boja;
+    width: $sirina;
+    style: solid;
+  }
+}
+@mixin font2 ($boja,$size){
+  font: {
+    color: $boja;
+    size: $size;
+  }
+}
+@mixin font {
+    font-family: "Courier";
+    font-weight: 600;
+}
+@mixin flexrow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+@mixin flexcolumn{
+    display: flex;
+    flex-direction: column;
+}
+@mixin flexcentar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@mixin max{
+    width: 100%;
+    height: 100%;
+}
+@mixin pozadina{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+body{
+  &::-webkit-scrollbar {
+    width: 18px;
+  }
+  &::-webkit-scrollbar-thumb{
+  background-color: $svetloplava;
+  outline: 2px solid $svetloplava;
+  }
+}
+.sirina{
+  margin: 0px auto;
+  width: 85%;
+}
+.cleaner{
+  clear: both;
+}
+nav{
+    @include flexcolumn;
+    width: 22%;
+    height: 100vh;
+    background-color: $tamnosiva;
+    float: left;
+    position: fixed;
+    padding-top: 2%;
+    border-right: 0.2vw solid $svetloplava;
+    #copy{
+      font-size: 1.3vw;
+    }
+    #copy2{
+      @extend #naslovreg2;
+      color: $svetloplava;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5vw;
+    }
+    #naslov{
+        font-size: 1.5vw;
+        color: $bojatekst2;  
+        font-style: italic;
+    }
+
+    //IF GRANANJE
+    
+            $boja: 4;
+
+            p {
+              @if $boja < 5 { 
+                font-size: 1.2vw;
+                color: $bojatekst2;
+                margin: 0px auto;
+                margin-top: 1vw;
+                  @if $boja == 3 {
+                      color: white;
+                    }
+                }
+            }
+    span{
+      color: $svetloplava;
+      font-weight: 700;
+    }
+    a{
+      text-decoration: none;
+      
+    }
+   #slika{
+        width: 10vw;
+        height: 10vw;
+        border-radius: 50%;
+        margin: 0px auto;
+        margin-bottom: 15%;
+        background-image: url("slika1.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        border: 0.2vw solid #5b97c9;
+        background-position: center;    
+    }
+    h1{
+        margin: 0px auto;        
+    }
+    ul{
+        @include flexcolumn();
+        margin: 0px auto;
+        margin-top: 7%;
+        li{
+            list-style-type: none;
+            margin: 0px auto;          
+            margin-bottom: 25%;
+            a{
+                color: $bojatekst2;
+                font-size: 1.4vw;
+                text-decoration: none;
+               &:hover{
+                   color: $svetloplava;
+               }
+               &:hover + .line{
+                   width: 100%;
+               }              
+            }     
+            .line{
+                width: 0%;
+                height: 0.1vw;
+                background-color: $svetloplava;
+                transition: 0.2s ease-in-out;
+                margin: 0px auto;
+            }    
+        }       
+    }
+    #ul2{
+      height: 2vw;
+        display: flex;
+        flex-direction: row;
+        width: 75%;
+        justify-content: space-around;
+        li{
+            margin-left: 5%;
+            list-style-type: none;
+            &:first-of-type{
+              margin-left: 0px;
+            }
+            a{
+                text-decoration: none;
+                font-size: 1vw;
+            }
+        }
+    }
+}
+main{
+    width: 78%;
+    height: fit-content;
+    float: right;
+    background-color: #ebebe5;
+    #reg1{
+      width: 100%;
+      height: 100vh;
+      background-image: url("../img/slika3.jpg");
+      @include pozadina;
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      justify-content: flex-start;
+      //background-attachment: fixed;
+      .typing{
+          margin-left: 7%;
+          margin-top: 8rem;            
+          p{
+              border-right: .15em solid $svetloplava;
+              white-space: nowrap;
+              overflow: hidden;
+              font-weight: bolder;
+              color: #fff;
+              font-size: 55px;
+              font-family: 'Miriam Libre', sans-serif;
+              width: fit-content;
+              &:nth-child(1) {                  
+                  width: grid1(3)+30px;
+                  -webkit-animation: type 1s steps(7, end);
+                  animation: type 0.7s steps(7, end);
+                  -webkit-animation-fill-mode: forwards;
+                  animation-fill-mode: forwards;
+              }
+              &:nth-child(2) {
+                  width: grid2(4)+20px;
+                  opacity: 0;
+                  -webkit-animation: type2 1.5s steps(20, end);
+                  animation: type2 1.5s steps(20, end);
+                  -webkit-animation-delay: 0.7s;
+                  animation-delay: 0.7s;
+                  -webkit-animation-fill-mode: forwards;
+                  animation-fill-mode: forwards;
+                  margin: 20px 0px;
+              }
+              &:nth-child(3) {
+                  width: grid2(5)+20px;
+                  opacity: 0;
+                  -webkit-animation: type3 1.5s steps(25, end), blink .5s step-end infinite alternate;
+                  animation: type3 1.5s steps(25, end), blink .5s step-end infinite alternate;
+                  -webkit-animation-delay: 2.4s;
+                  animation-delay: 2.4s;
+                  -webkit-animation-fill-mode: forwards;
+                  animation-fill-mode: forwards;
+                  margin-bottom: 30px;
+                  
+              }
+              @keyframes type {
+                  0% {
+                    width: 0;
+                  }
+                  99.9% {
+                    border-right: .15em solid $svetloplava;
+                  }
+                  100% {
+                    border: none;
+                  }
+                }                  
+                @-webkit-keyframes type {
+                  0% {
+                    width: 0;
+                  }
+                  99.9% {
+                    border-right: .15em solid $svetloplava;
+                  }
+                  100% {
+                    border: none;
+                  }
+                }                  
+                @keyframes type2 {
+                  0% {
+                    width: 0;
+                  }
+                  1% {
+                    opacity: 1;
+                  }
+                  99.9% {
+                    border-right: .15em solid $svetloplava;
+                  }
+                  100% {
+                    opacity: 1;
+                    border: none;
+                  }
+                }                  
+                @-webkit-keyframes type2 {
+                  0% {
+                    width: 0;
+                  }
+                  1% {
+                    opacity: 1;
+                  }
+                  99.9% {
+                    border-right: .15em solid $svetloplava;
+                  }
+                  100% {
+                    opacity: 1;
+                    border: none;
+                  }
+                }
+                @keyframes type3 {
+                  0% {
+                    width: 0;
+                  }
+                  1% {
+                    opacity: 1;
+                  }
+                  100% {
+                    opacity: 1;
+                  }
+                }
+                @-webkit-keyframes type3 {
+                  0% {
+                    width: 0;
+                  }
+                  1% {
+                    opacity: 1;
+                  }
+                  100% {
+                    opacity: 1;
+                  }
+                }   
+                @keyframes blink {
+                  50% {
+                    border-color: transparent;
+                  }
+                }
+                @-webkit-keyframes blink {
+                  50% {
+                    border-color: tranparent;
+                    animation-iteration-count: infinite;
+                  }
+                }
+          }
+      }
+      a{
+        margin-left: 7%;
+        margin-top: 2%;
+      input{
+          width: grid2(2);
+          height: grid1(2)-20px;
+          background-color: rgba(0, 0, 0, 0);
+          border: 3px solid $svetloplava;
+          color: #fff;
+          font-size: 25px;
+          cursor: pointer;
+          animation-name: anim2;
+          position: relative;
+          animation-duration: 6s;           
+          color: $svetloplava;
+          @keyframes anim2 {
+              0%   {top:400px;}
+              100% {top:0px; }
+          }
+          &:hover{
+            color: #fff;
+            border: 3px solid #fff;
+          }
+      }}
+      
+          //IF GRANANJE 2
+
+              $strelaa: 3*3/2;
+
+              #strela {
+                @if $strelaa < 5 { 
+                  margin-left: 13%;
+                  margin-top: 5%;
+                    @if $strelaa == 3 {
+                        margin-left: 30%;
+                        margin-top: 16%;
+                      }
+                  }
+              }
+      
+      i{
+          margin-left: 10%;
+          font-size: 110px;
+          color: $svetloplava;           
+          animation-name: anim7;
+          animation-duration: 2s;
+          position: relative;
+          animation-iteration-count: infinite;
+          animation-delay: 5s;
+          @keyframes  anim7{
+              0%   {top:0px;}
+              50%  {top:30px;}
+              100%  {top:0px;} 
+          }      
+      }
+  }
+  #crno{
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        margin-top: -100vh;
+    }  
+    #prelaz{
+        width: 100%;
+        height: 25px;
+        background-image: linear-gradient(#252525, #ebebe5);
+    }
+    #reg2{
+       margin: 70px auto;
+       @include flexrow;
+       justify-content: center;
+      
+
+       #abaut4{
+         width: 45%;
+         #jezik{
+           margin-bottom: 0px;
+         }
+       }
+
+     
+        #abaut{
+            margin-right: 15%;
+            width: 55%;
+            #sve{
+              width: 100%;
+              @include flexrow;  
+              .klasa{
+                margin-bottom: 0px;
+              }  
+              .dva{
+                margin-bottom: 20px;
+              }  
+              .tri{
+                color: $tamnosiva;
+                font-weight: 600;
+              }   
+              .cetiri{
+                color: $tamnosiva;
+                font-weight: 600;
+              }   
+              .pet{
+                font-size: 30px;
+                color: $tamnoplava;
+                margin-bottom: 10px;
+              }  
+            #presek1{
+              height: 270px;
+              @include flexcolumn;
+              align-items: center;
+
+              #pocetak{
+                width: 7px;
+                height: 7px;
+                border-radius: 50% 50% 0% 0%;
+                background-color: $tamnoplava;
+              }
+              #kraj{
+                width: 7px;
+                height: 7px;
+                border-radius: 0% 0% 50% 50% ;
+                background-color: $tamnoplava;
+              }
+              #presek{
+                width: 7px;
+                height: 90%;
+                margin-top: 2%;
+                background-color: $tamnoplava;
+              }
+            }}
+           
+            #naslovreg2{
+                border-bottom: 3px solid $svetloplava;
+                width: fit-content;
+                font-weight: 600;
+                margin: 0px auto;
+                margin-bottom: 50px;
+                font-size: 35px;
+            }
+            h1{
+              font-size: 25px;
+              font-weight: 600;
+              text-align: center;
+              color: $tamnosiva;
+            }
+            h2{
+              text-align: center;
+              margin-bottom: 15px;
+              font-weight: 500;
+              color: $bojatekst;
+            }
+            p{
+                line-height: 2;
+                font-size: 20px;
+            }
+        }
+        #okvir{
+          margin-top: 30px;
+            width: 35%;
+            height: grid2(3)+30px;
+            border: 4px solid $svetloplava;
+            
+            #okvir2{
+                @include max;
+            }
+              
+        #abaut2{ 
+            
+            position: relative;
+            top: 10px;
+            right: 10px;
+            @include max;
+            margin: 0px auto;
+            height: 320px;
+            background-image: url("../img/slika1.jpg");
+            @include pozadina;
+            transition: 0.5s;  
+                     
+            &:hover{
+              top: 0px;
+              right: 0px;
+            }
+        }
+      }
+    }
+    #reg3{
+        @include flexrow;
+        margin-bottom: 50px; 
+    .box{
+        width: 22%;
+        height: fit-content;
+        background-color: #fff;
+        @include border($svetloplava, 3px);
+        transition: 0.5s;
+        padding: 30px 10px 10px 30px;
+        &:hover{
+          transform: scale(1.1);
+        }
+        p{
+          font-size: 25px;
+          font-weight: 600;
+          color: $bojatekst2;
+        }
+        &:hover{
+        i{
+            animation: mymove 3s infinite;
+        }
+        }
+        @keyframes mymove {
+            50% {transform: rotate(180deg);}
+        }
+        .opis{
+            color: $bojatekst;
+            display: none;
+           
+        }      
+        
+        
+        .opis{
+          margin-top: 10px;
+          p{
+            font-size: 26px;
+          }
+        }
+        i{
+            color: $tamnoplava;
+            font-size: 60px;
+            margin-bottom: 10%;
+            position: relative;
+        }
+        p{
+            margin-bottom: 10px;
+            font-weight: none;
+        }
+    }
+      
+
+    }     
+    #ul3{
+        width: 100%;
+        height: grid1(1);
+        background-color: $tamnosiva;
+        display: none;
+        position: sticky;
+        top: 0px;
+        z-index: 1111;
+        
+        ul{
+            width: 86%;
+            margin: 0px auto;
+            @include flexrow;
+            padding-top: 15px;
+            list-style-type: none;
+            flex-wrap: wrap;
+            li{
+                a{
+                    text-decoration: none;
+                    color: $svetloplava;
+                    size: 25px;
+                }
+            }
+            
+        }
+  }
+  h1{
+      &#nas1{
+         margin-left: 7%;
+         margin-bottom: 30px;
+         letter-spacing: 5px;
+       }
+  }
+  #reg4{
+    @include flexrow;
+    margin-bottom: grid2(1);
+    margin-top: 100px;
+    .box2{
+      @extend .box;
+      width: 30%;
+      height: fit-content;
+      background-color: #fff;
+      @include border($tamnoplava);
+      padding: 10px;
+      box-sizing: border-box;
+      
+      h1{
+        @extend .box;
+        font-size: 25px;
+        text-align: center;
+        margin-top: 70px;
+        margin-bottom: 20px;
+      }
+      p{
+        @extend .opis;
+        text-align: center;
+        line-height: 1.6;
+        color: $bojatekst;
+        margin-bottom: 30px;
+        font-size: 22px;
+      }
+    .ugao {
+      position: relative;
+      width: 120px; 
+      height: 63.21px;
+      background-color: $tamnoplava;
+      margin: 86.60px 0;
+      @include flexcentar;
+      margin: 0px auto;
+
+      img{
+        width: 70px;
+        height: 70px;
+      }
+    }
+    .ugao{
+      margin-top: -30px;
+    }
+  .ugao:before,
+  .ugao:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      border-left: 60px solid transparent;
+      border-right: 60px solid transparent;
+  }   
+  .ugao:before {
+      bottom: 100%;
+      border-bottom: 36.60px solid $tamnoplava;
+  }   
+  .ugao:after {
+      top: 100%;
+      width: 0;
+      border-top: 36.60px solid $tamnoplava;
+  }
+  }
+  }
+  .naslovi{
+    margin: 70px 0px;
+    line-height: 1.8;
+    width: 100%;
+    padding-left: 7%;
+    height: 150px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    color: #000;
+    letter-spacing: 3px;
+    background-color: #cecece;
+    h2{
+      font-size: 20px;
+      color: $tamnoplava;
+    }
+    h1{
+      font-size: 32px;
+    }
+  }
+  #reg7{
+    height: fit-content; 
+    #skils{
+      @include flexrow;
+      flex-wrap: wrap;
+      .strana{
+        width: 50%;
+        height: 300px;
+        @include flexcentar;
+        .mali{
+          width: 95%;
+          height: 20%;
+          @include flexcolumn;
+
+         
+         div{
+            @include flexrow();
+            .plevo{
+              float: left;
+              margin-top: 5px;
+              color: #000;
+              font-size: 25px;
+              font-weight: 500;
+              font-style: italic;
+              font-weight: 700;
+            }
+            .pdesno{
+              float: right;
+              margin-top: 8px;
+              font-size: 20px;
+              color: #000;
+              font-weight: 700;
+            }
+          }
+          .linija{
+            width: 100%;
+            height: 15px;
+            background-color: rgb(208, 222, 236);
+            border: 2px solid #fff;
+
+            //EACH
+
+            $linije: 1, 2, 3, 4, 5, 6, 7, 8;
+      
+                @each $linija in $linije {
+                  .procenat-#{$linija} {
+                    width: 100% - 3*$linija;
+                    height: 100%;
+                    background-color: $tamnoplava;
+                    
+                  }
+                }
+
+          }
+        }
+      }
+    }
+  }
+  #reg10{
+    height: fit-content;
+    @include flexrow;
+    margin-bottom: 50px;
+    .cont{
+      width: 48%;
+      height: 100%;
+
+      #mreze{
+        margin-top: 20px;
+        height: 50px;
+        width: 100%;
+        display: flex;
+        
+    
+          //EACH
+
+                $polja: 1, 2, 3, 4;
+      
+                @each $polje in $polja {
+                  .mreza-#{$polje} {
+                    width: grid1(1);
+                    height: grid1(1);
+                    margin-right: 30px;
+                    background-color: $tamnoplava;
+                    @include flexcentar;
+                    cursor: pointer;
+                  }
+                }
+
+          //EACH
+                $vrednosti: 1, 2, 3, 4;
+      
+                @each $vrednost in $vrednosti {
+                  .ikona-#{$vrednost} {
+                    color: #fff;
+                    font-size: 33px; 
+                    
+                    &:hover{
+                      color: $tamnosiva;
+                    }
+                  }
+                }
+      }
+
+      input{
+        width: 90%;
+        float: right;
+        height: grid1(1)+3px;
+        margin-bottom: 15px;
+        padding-left: 20px;
+        font-size: 20px;
+        border: 2px solid #5b97c9;
+      }
+      textarea{
+        height: grid1(3)+30px;
+        width: 90%;
+        float: right;
+        margin-bottom: 15px;
+        padding: 20px;
+        font-size: 20px;
+        box-sizing: border-box;
+        resize: none;
+        border: 2px solid #5b97c9;
+      }
+      button{
+        width: grid1(3)+30px;
+        height: 50px;
+        background-color: $tamnoplava;
+        color: #fff;
+        font-size: 20px;
+        margin-left: 10%;
+        cursor: pointer;
+        &:hover{
+          background-color: #5b97c9;
+        }
+      }
+      .cont2{
+        border-right: 3px solid $tamnoplava;
+        width: 100%;
+        height: 110px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #fff;
+        color: $bojatekst;
+        &:nth-child(2){
+          margin: 25px 0px;
+        }
+       
+        p{
+          margin-left: 20px;
+          font-size: 20px;
+          font-weight: 700;
+          word-break: break-all;
+        }
+      }
+      
+      //EACH
+        $blokovi: 1, 2, 3;
+      
+        @each $blok in $blokovi {
+          .cont3-#{$blok} {
+            width: 110px;
+            height: 100%;
+            background-color: $tamnoplava;
+            @include flexcentar;
+          }
+        }
+
+      //EACH
+        $ikonice2: 1, 2, 3;
+      
+        @each $ikona2 in $ikonice2 {
+          .ikona2-#{$ikona2} {
+            color: #fff;
+            font-size: 35px;
+          }
+        }
+    }
+  }
+  #projekti{
+    height: 300px;
+    @include flexrow;
+    flex-wrap: wrap;
+    .pr{
+      .mutno{
+        a{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-decoration: none;
+          button{
+            background-color: $tamnosiva;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-top: 6vw;
+            color: $tamnoplava;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-bottom: 5%;
+            &:hover{
+              transform: scale(1.02);
+              color: #fff;
+            }
+          }
+        }
+        @include max;
+        @include flexcentar;
+        background-color: rgba(255, 255, 255,0.8);
+        display: none; 
+        p{
+          text-align: center;
+          font-size: 20px;
+          font-weight: 600;
+        }
+        .txt2{
+          color: $bojatekst;
+          font-weight: 500;
+          margin-top: 1%;
+        }   
+      }
+      width: 45%;
+      height: 100%;
+      background-image: url("../img/projekat1.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      &:nth-child(2){
+        background-image: url("../img/projekat2.jpg");
+      }
+      &:hover{
+        .mutno{
+          display: block;
+        }
+      }
+    }
+  }
+  
+
+}
